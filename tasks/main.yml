@@ -122,7 +122,7 @@
   systemd:
     daemon_reload: yes
   tags:
-    - restart_services
+    - restart-services
 
 - name: restart and enable docker 
   systemd:
@@ -130,6 +130,6 @@
     state: restarted
     enabled: yes
   tags:
-    - restart_services
+    - restart-services
 
 
