@@ -1,17 +1,17 @@
-Ansible Role: kube_install
+Ansible Role: install-kube
 =========
 
-Ansible Role for preparing and installing kubernetes on multiple machines using Ansible 
+Ansible Role for preparing and installing kubernetes on multiple machines using Ansible.
 
 Requirements
 ------------
-No special requirements; note that this role requires root access, so either run it in a playbook with a global become: yes, or invoke the taks in your playbook like:
+No special requirements; note that this role requires root access, so either run it in a playbook with a global become: yes, or invoke the tasks in your playbook like:
 ```
 - hosts: servers
   tasks:
     - name: install-kube
       import_role:
-        name: kube_install
+        name: ansible-role-install-kube
       become: yes
 ```
 installing
@@ -20,7 +20,7 @@ Inside the same folder your playbook is in:
 ```
 mkdir -p roles
 cd roles
-git clone https://github.com/hiitsmatan/kube_install.git
+git clone https://github.com/hiitsmatan/ansible-role-install-kube.git
 ```
 
 Example Playbook
@@ -33,5 +33,5 @@ Including an example of how to use your role (for instance, with variables passe
   tasks:
     - name: install kube
       import_role:
-        name: kube_install
+        name: ansible-role-install-kube
 ```
