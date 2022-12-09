@@ -14,7 +14,7 @@ No special requirements; note that this role requires root access, so either run
         name: ansible-role-install-kube
       become: yes
 ```
-installing
+Installing
 ------------
 Inside the same folder your playbook is in:
 ```
@@ -22,11 +22,9 @@ mkdir -p roles
 cd roles
 git clone https://github.com/hiitsmatan/ansible-role-install-kube.git
 ```
-
 Example Playbook
 ----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Example of how to use your role in a playbook:
 ```
 - hosts: all
   become: yes
@@ -35,3 +33,33 @@ Including an example of how to use your role (for instance, with variables passe
       import_role:
         name: ansible-role-install-kube
 ```
+Execution
+----------------
+Example of how to execute your role:
+```
+ansible-playbook -i inventory your-playbook-name.yaml
+```
+or with the `-K` option which prompts you for become password:
+```
+ansible-playbook -i inventory -K your-playbook-name.yaml
+```
+Available Tags
+----------------
+Example of how to execute this role with specific actions:
+```
+ansible-playbook -i inventory your-playbook-name.yaml --tags "tag-name1,tag-name2"
+```
+### Tags:
+| Tag Name | Explanation |
+| ------------- | ------------- |
+| `update-packages`  | Equal to `apt-get update`  |
+| `swapoff` | Cancels the usage of swapfile  |
+| `ip-forward` | Activated ipv4 forwarding  |
+| `install-docker`  | Installs only Docker |
+| `install-kubernetes`  | Installs only Kubernetes and creates daemon.json service file |
+| `restart-services`  | Restarts the Docker and daemon services |
+
+
+
+
+
