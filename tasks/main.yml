@@ -46,7 +46,7 @@
     state: present
   become: yes
   tags:
-    - install_docker
+    - install-docker
 
 - name: add docker GPG key
   shell:
@@ -58,7 +58,7 @@
     state: present
   become: yes
   tags:
-    - install_docker
+    - install-docker
 
 - name: Install docker
   package:
@@ -66,23 +66,23 @@
     state: present
   become: yes
   tags:
-    - install_docker
+    - install-docker
 
 - name: Check Docker version
   shell: "docker --version"
   register: command_output
   tags:
-    - install_docker
+    - install-docker
 
 - debug:
     var: command_output.stdout_lines
   tags:
-    - install_docker
+    - install-docker
 
 - name: Add kubernetes GPG key
   shell: "curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add"
   tags:
-    - install_kubernetes
+    - install-kubernetes
 
 - name: Add kuberenetes repo
   apt_repository:
@@ -90,7 +90,7 @@
     state: present
   become: yes
   tags:
-    - install_kubernetes
+    - install-kubernetes
 
 - name: Update packages after adding kube repo
   apt: 
@@ -99,7 +99,7 @@
     allow_unauthenticated: yes
   become: yes
   tags:
-    - install_kubernetes
+    - install-kubernetes
 
 - name: Install kubelet kubeadm kubectl
   package:
@@ -107,7 +107,7 @@
     state: present
   become: yes
   tags:
-    - install_kubernetes
+    - install-kubernetes
 
 - name: Create daemon file 
   copy:
@@ -116,7 +116,7 @@
     backup: yes
     mode: 0640
   tags:
-    - install_kubernetes
+    - install-kubernetes
 
 - name: daemon-reload
   systemd:
